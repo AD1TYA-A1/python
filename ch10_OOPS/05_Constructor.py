@@ -5,12 +5,13 @@ class Employee:
 
     def __init__(self, salary, language , name ):
         self.salary = salary
-        self.language = language
+        self.language = language    
         self.name = name
+
 
     def getInfo(self):
         print(f"The language is {self.language}. The Salary is {self.salary}")
-    @staticmethod
+    @staticmethod   # To avoid Positional Argument Error
     def greet():
         print(f"Good Morning!!")
 

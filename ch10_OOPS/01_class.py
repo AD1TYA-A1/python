@@ -2,12 +2,12 @@ class Employee:
     salary = 300000000000; # Class Attribute
     language = "js"        # Class Attribute
 
+
 # Created an object Aditya
 Aditya = Employee()
 Aditya.name = "Aditya" # Instance Attribute
 print(Aditya.salary, Aditya.language)
 print(Aditya.name)
-
 
 
 Adiesssss = Employee()
