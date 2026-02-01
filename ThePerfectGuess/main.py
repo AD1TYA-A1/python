@@ -16,8 +16,29 @@ def rndm():
     return num
 
 
+def addUser(userName, score):
+    with open("user.txt", "r") as f:
+        content = f.readlines()
+        # print(len(content))
+        length = len(content)
+        for i in range(0, length):
+            if userName in content[i]:
+                OldScore = content[i].split(" ")
+                if int(OldScore[1]) > score:
+                    content[i] = f"{userName}: {score} \n"
+                    with open("user.txt", "w") as f2:
+                        f2.writelines(content)
+                        break
+                break
+
+        else:
+            with open("user.txt", "a") as f2:
+                f2.write(f"{userName}: {score} \n")
+
+
+userName = input("Enter your Name to Play: ")
 score = 0
-print("Computer have chosen a Number \t TAKE GUESSES!!")
+print("Computer have chosen a Number")
 a = int(input("Guess a number: "))
 rndm = rndm()
 while a != rndm:
@@ -27,8 +48,10 @@ while a != rndm:
     elif a < rndm:
         print("Higher Number Please!!")
         score+=1
-
     a = int(input())
 
 print("Got That")
-print(f"Score: {score}")
+print(f"{userName} Score: {score}")
+
+addUser(userName,score)
+# addUser("Aditya", 10)
