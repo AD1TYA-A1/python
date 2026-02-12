@@ -86,14 +86,14 @@ if __name__ == "__main__":
                             
                             # Personal interaction commands
                             elif "how r u" in cmd_lower or "how are you" in cmd_lower:
-                                speak_threaded("I am good Aaadddiiitttya. How about you?")
+                                speak_threaded("I am good user. How about you?")
                             elif "i am not fine" in cmd_lower:
                                 speak_threaded("Ok sir Opening bot; you can share your thoughts")
                                 webbrowser.open("https://chatgpt.com/")
                             elif "i am fine" in cmd_lower:
                                 speak_threaded("Good to hear that;  waiting for your Command")
                             elif "do you know my sister" in cmd_lower:
-                                speak_threaded("Yes Sir, I know your sister. Her name is Aaddiittii. She is very short tempered. And her exams are coming soon but she has not studied anything, hahahahahahahahaha")
+                                speak_threaded("Yes Sir, I know your sister... She is very short tempered. And her exams are coming soon but she has not studied anything, hahahahahahahahaha")
                             
                             # Search commands
                             elif "search" in cmd_lower or "google" in cmd_lower:
