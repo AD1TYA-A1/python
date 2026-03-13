@@ -4,7 +4,7 @@ import pyperclip
 import time
 
 client = OpenAI(
-    api_key="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",
+    api_key="Your API key",
 )
 
 
