@@ -1,25 +1,22 @@
-from google import genai
+from openai import OpenAI
 
-client = genai.Client(api_key="Your API key")
-
-command = """
-
-[12:28, 12/3/2026] Aditya: Aagya bhai
-[12:28, 12/3/2026] Aditya: Paper dekek
-[19:26, 12/3/2026] Aditi: Paper dekek
-Achaa
-[19:53, 12/3/2026] Aditya: Guuu
-[19:53, 12/3/2026] Aditya: Me nahane jaara
-[19:56, 12/3/2026] Aditi: Acha
-"""
-
-response = client.models.generate_content(
-    model="gemini-2.0-flash",
-    contents=(
-        "You are a person named Harry who speaks Hindi and English. "
-        "He is from India and is a coder. Respond like Harry.\n\n"
-        f"Chat: {command}"
-    ),
+client = OpenAI(
+  base_url = "https://integrate.api.nvidia.com/v1",
+  api_key = "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"
 )
 
-print(response.text)
+completion = client.chat.completions.create(
+  model="nvidia/llama-3.3-nemotron-super-49b-v1.5",
+  messages=[{"role":"system","content":"/think"},{"role":"user","content":"Hello How are you!!"}],
+  temperature=0.6,
+  top_p=0.95,
+  max_tokens=65536,
+  frequency_penalty=0,
+  presence_penalty=0,
+  stream=True
+)
+
+for chunk in completion:
+  if chunk.choices[0].delta.content is not None:
+    print(chunk.choices[0].delta.content, end="")
+

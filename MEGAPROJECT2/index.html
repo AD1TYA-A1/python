@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Checker</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+        h2 {
+            color: #c07e7edc; /* Changed title color to match the theme */
+        }
+        input[type="number"] {
+            background-color: #f0e6f0; /* Light purple background for input box */
+            border: 1px solid rgba(146, 23, 136, 0.753); /* Matching border color */
+            padding: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid rgba(146, 23, 136, 0.753);
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #c07e7edc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>ENTER NUMBER TO CHECK THE TYPE</h2>
+
+    Enter a number:
+    <input type="number" id="num">
+    <button id="checkBtn">Check</button>
+
+    <table id="resultTable">
+        <tr>
+            <th>Function</th>
+            <th>Result</th>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $("#checkBtn").click(function () {
+
+                $("#resultTable tr:gt(0)").remove();
+
+                let n = parseInt($("#num").val());
+
+                // Natural number
+                let natural = (n >= 1) ? "Yes it is a natural number" : "No it is not a natural number";
+
+                // Even or Odd
+                let evenOdd = (n % 2 === 0) ? "The number is Even" : "The number is Odd";
+
+                // Prime number
+                let prime = "It is a Prime";
+                if (n <= 1) {
+                    prime = "Not a Prime";
+                } else {
+                    for (let i = 2; i <= Math.sqrt(n); i++) {
+                        if (n % i === 0) {
+                            prime = "Not a Prime";
+                            break;
+                        }
+                    }
+                }
+
+                $("#resultTable").append(
+                    "<tr><td>Natural Number</td><td>" + natural + "</td></tr>" +
+                    "<tr><td>Even / Odd</td><td>" + evenOdd + "</td></tr>" +
+                    "<tr><td>Prime</td><td>" + prime + "</td></tr>"
+                );
+            });
+        });
+    </script>
+
+</body>
+</html>
